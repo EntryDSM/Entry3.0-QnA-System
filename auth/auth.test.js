@@ -1,5 +1,5 @@
-require('./connectDB');
 require('dotenv').config();
+require('./connectDB');
 const keygen = require('../auth');
 
 describe('Auth module test', () => {
