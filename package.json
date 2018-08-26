@@ -1,0 +1,25 @@
+{
+  "name": "entryqa",
+  "version": "1.0.0",
+  "description": "DSM Entry Q&A System",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "keygen": "^0.3.1",
+    "mongoose": "^5.2.9",
+    "nodemailer": "^4.6.8",
+    "nodemailer-smtp-pool": "^2.8.3",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "gulp": "^3.9.1"
+  }
+}
