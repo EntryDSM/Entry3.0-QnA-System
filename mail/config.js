@@ -1,7 +1,7 @@
 let config = { };
 
 const set = function setConfig(newConfig) {
-  config = setConfig;
+  config = newConfig;
 };
 
 const get = function getConfig() {

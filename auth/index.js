@@ -1,4 +1,4 @@
-const keygen = require('keygen');
+const keygen = require('keygenerator');
 const AuthDB = require('./DAL');
 
 let lock = false;

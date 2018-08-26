@@ -6,4 +6,4 @@ db.once('open', () => {
   console.log('connected to db server');
 });
 
-mongoose.connect('mongodb://localhost/');
+mongoose.connect(process.env.DB_ADDR);

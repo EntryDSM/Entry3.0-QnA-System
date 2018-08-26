@@ -2,10 +2,10 @@ let conf = require('./config');
 let nodemailer = require('nodemailer');
 let smtpPool = require('nodemailer-smtp-pool');
 
-const sendMail = (src, dest, subject, text, callback) => {
+const sendMail = (dest, src, subject, text, callback) => {
   const mailopt = {
-    src, 
-    dest,
+    to: dest, 
+    from: src,
     subject,
     text
   };
@@ -16,7 +16,7 @@ const sendMail = (src, dest, subject, text, callback) => {
     port: config.mailer.port,
     auth: {
       user: config.mailer.user,
-      password: config.mailer.password
+      pass: config.mailer.password
     },
     tls: {
       rejectUnauthorized: false
@@ -24,6 +24,7 @@ const sendMail = (src, dest, subject, text, callback) => {
     maxConnections: 5,
     maxMessages: 10
   }));
+
   transporter.sendMail(mailopt, (err, res) => {
     callback(err, res);
     transporter.close();
