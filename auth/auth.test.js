@@ -1,27 +1,13 @@
+const assert = require('assert');
 require('dotenv').config();
 require('./connectDB');
+
 const keygen = require('../auth');
 
 describe('Auth module test', () => {
-  it('should be generate key', done => {
-    keygen.getKey((err, key) => {
-      if (err) {
-        
-      } else {
-        console.log('KEY: ', key);
-        done();
-      }
-    });
-  });
-  
-  it('should be checked', done => {
-    keygen.checkKey("cIcCRlTkEuqx41QvGcmLTAYDVC4YqN2W", (err, key) => {
-      if (err) {
-
-      } else {
-        console.log('FOUND: ', key);
-        done();
-      }
-    });
+  it('should be generate key', () => {
+    const key = keygen.getKey();
+    console.log(key);
+    assert.notEqual(key, '');
   });
 });

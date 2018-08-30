@@ -10,7 +10,7 @@ EntryDSM의 Q&A 서비스는, 입학 전형에 관해 궁금한 사항이 있거
 ## Technical Stack
 
 ### Main Language
-- JavaScript
+- JavaScript (ES6)
 
 ### Web Framework
 - Express

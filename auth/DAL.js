@@ -1,8 +1,7 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-let authSchema = Schema({
-  value: String
+const authSchema = mongoose.Schema({
+  value: String,
 });
 
 module.exports = mongoose.model('auth', authSchema);

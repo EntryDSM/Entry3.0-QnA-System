@@ -1,6 +1,6 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-let db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', () => {
   console.log('connected to db server');

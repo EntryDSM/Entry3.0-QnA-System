@@ -1,13 +1,13 @@
-let conf = require('./config');
-let nodemailer = require('nodemailer');
-let smtpPool = require('nodemailer-smtp-pool');
+const nodemailer = require('nodemailer');
+const smtpPool = require('nodemailer-smtp-pool');
+const conf = require('./config');
 
 const sendMail = (dest, src, subject, text, callback) => {
   const mailopt = {
-    to: dest, 
+    to: dest,
     from: src,
     subject,
-    text
+    text,
   };
   const config = conf.get();
   const transporter = nodemailer.createTransport(smtpPool({
@@ -16,13 +16,13 @@ const sendMail = (dest, src, subject, text, callback) => {
     port: config.mailer.port,
     auth: {
       user: config.mailer.user,
-      pass: config.mailer.password
+      pass: config.mailer.password,
     },
     tls: {
-      rejectUnauthorized: false
+      rejectUnauthorized: false,
     },
     maxConnections: 5,
-    maxMessages: 10
+    maxMessages: 10,
   }));
 
   transporter.sendMail(mailopt, (err, res) => {

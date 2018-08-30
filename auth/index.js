@@ -1,29 +1,34 @@
 const keygen = require('keygenerator');
 const AuthDB = require('./DAL');
+const authController = require('./auth.control');
 
 let lock = false;
 
-const lockByTime = function (time) {
-  setTimeout(() => { lock = true }, time);
+const lockByTime = (time) => {
+  setTimeout(() => {
+    lock = true;
+  }, time);
 };
 
-const getKey = function generator(callback) {
-  if (lock) return;
+const getKey = function generator() {
+  if (lock) return '';
   const key = keygen._({ length: 32 });
-  const authdb = new AuthDB();
-  authdb.value = key;
-  authdb.save((err) => {
-    callback(err, key);
-  });
   lock = true;
-  lockByTime(10*1000);
+  lockByTime(10 * 1000);
+  return key;
 };
 
-const checkKey = function ckecker(key, callback) {
+const checkKey = function ckeck(key, callback) {
   AuthDB.findOne({ value: key }, callback);
+};
+
+const isAdmin = function check(key) {
+  return process.env.ADMIN_KEY === key;
 };
 
 module.exports = {
   getKey,
-  checkKey
+  checkKey,
+  authController,
+  isAdmin,
 };
