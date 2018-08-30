@@ -1,13 +1,23 @@
 const msgQueue = require('./messageQueue');
+const auth = require('../auth');
 
-module.exports = (data, io) => {
-  const { key, message } = data;
-  io.clients((err, sockets) => {
+module.exports = (data, io, socket) => {
+  const { message, userId, key } = data;
+  let ns = null;
+  let room = null;
+  if (auth.isAdmin(key)) {
+    ns = io.in(userId);
+    room = userId;
+  } else {
+    ns = io.in(socket.id);
+    room = socket.id;
+  }
+  ns.clients((err, sockets) => {
     const { length } = sockets;
     if (length < 2) {
-      msgQueue.addMessage(key, message);
+      msgQueue.addMessage(room, message);
     } else {
-      io.in(key).emit(message);
+      ns.emit('message', { message });
     }
   });
 };

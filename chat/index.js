@@ -9,7 +9,7 @@ const onConnect = (socket, io) => {
   });
 
   socket.on('message', (data) => {
-    onMessage(data, io);
+    onMessage(data, io, socket);
   });
 
   socket.on('disconnect', (data) => {

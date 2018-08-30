@@ -17,9 +17,31 @@ const getKey = function fromId(id) {
   return connectedUsers.get(id);
 };
 
+const countAdmin = function count() {
+  let i = 0;
+  connectedUsers.forEach((value) => {
+    if (value === process.env.ADMIN_KEY) {
+      i += 1;
+    }
+  });
+  return i;
+};
+
+const getRoomIdFromKey = function fromKey(key) {
+  let result = null;
+  connectedUsers.forEach((value, id) => {
+    if (key === value) {
+      result = id;
+    }
+  });
+  return result;
+};
+
 module.exports = {
   isAdmin,
   getKey,
   addUser,
   removeUser,
+  countAdmin,
+  getRoomIdFromKey,
 };

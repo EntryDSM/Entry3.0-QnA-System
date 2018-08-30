@@ -4,20 +4,21 @@ const msgQueue = require('./messageQueue');
 
 
 module.exports = (joinConfig, io, socket) => {
-  const { key } = joinConfig;
+  const { key, userId } = joinConfig;
   auth.checkKey(key, (err, res) => {
     if (err || !res) {
       socket.disconnect(true);
     } else {
-      socket.join(key);
+      const room = auth.isAdmin(key) ? userId : socket.id;
+      socket.join(room);
       connected.addUser(socket.id, key);
-      if (msgQueue.existsMessage(key)) {
-        io.in(key).emit(msgQueue.getMessage(key));
-      }
       if (auth.isAdmin(key)) {
         io.emit('connect admin');
+      }
+      io.emit('admins', { count: connected.countAdmin() });
+      if (msgQueue.existsMessage(room)) {
+        io.in(room).emit(msgQueue.getMessage(room));
       }
     }
   });
 };
-

@@ -25,7 +25,7 @@ const checkKey = function ckeck(key, callback) {
 const isAdmin = function check(key) {
   return process.env.ADMIN_KEY === key;
 };
-
+ 
 module.exports = {
   getKey,
   checkKey,
