@@ -1,6 +1,6 @@
 const assert = require('assert');
 require('dotenv').config();
-require('./connectDB');
+require('../auth/connectDB');
 
 const keygen = require('../auth');
 

@@ -4,7 +4,8 @@
   "description": "DSM Entry Q&A System",
   "main": "app.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha $(find ./auth ./chat ./mail -name '*.test.js') --recursive -w"
+    "test": "mocha",
+    "cover": "nyc --reporter=text mocha"
   },
   "author": "HubCodes",
   "license": "MIT",
@@ -19,11 +20,13 @@
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
+    "babel-istanbul": "^0.12.2",
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.0",
     "gulp": "^3.9.1",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0"
   }
 }

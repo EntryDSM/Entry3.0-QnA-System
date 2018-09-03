@@ -1,7 +1,7 @@
 require('dotenv').config();
 const assert = require('assert');
-const connectedUsers = require('./connectedUsers');
-const messageQueue = require('./messageQueue');
+const connectedUsers = require('../chat/connectedUsers');
+const messageQueue = require('../chat/messageQueue');
 
 describe('Chat module test', () => {
   describe('connectedUsers module', () => {

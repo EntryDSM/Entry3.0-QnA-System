@@ -6,4 +6,4 @@ db.once('open', () => {
   console.log('connected to db server');
 });
 
-mongoose.connect(process.env.DB_ADDR);
+mongoose.connect(process.env.DB_ADDR, { useNewUrlParser: true });
