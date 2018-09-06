@@ -18,14 +18,14 @@ const getKey = function generator() {
   return key;
 };
 
-const checkKey = function ckeck(key, callback) {
+const checkKey = function check(key, callback) {
   AuthDB.findOne({ value: key }, callback);
 };
 
 const isAdmin = function check(key) {
   return process.env.ADMIN_KEY === key;
 };
- 
+
 module.exports = {
   getKey,
   checkKey,

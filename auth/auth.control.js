@@ -1,7 +1,6 @@
 const authKeygen = require('../auth');
 const sendMailFactory = require('../mail');
 const AuthDB = require('./DAL');
-require('dotenv').config();
 
 const mailConfig = {
   mailer: {
@@ -30,7 +29,7 @@ module.exports = function auth(req, res) {
     if (_err) {
       res.status(500).send('');
     } else {
-      res.status(201).send(JSON.stringify({ key }));
+      res.status(201).send('');
     }
   });
 };

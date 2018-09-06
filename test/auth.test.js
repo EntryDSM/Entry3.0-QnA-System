@@ -10,4 +10,7 @@ describe('Auth module test', () => {
     console.log(key);
     assert.notEqual(key, '');
   });
+  it('checking admin', () => {
+    assert.equal(keygen.isAdmin(process.env.ADMIN_KEY), true);
+  })
 });
