@@ -12,7 +12,7 @@ EntryDSM Q&A System(이하 시스템)은 입학 전형에 관해 궁금한 사�
 
 |URI  |Description|Argument|On success|On failure|
 |:---:|:---------:|:------:|:--------:|:--------:|
-|/auth|인증 번호를 발급합니다.|쿼리: email로 인증번호를 발급받을 이메일 전송|HTTP 201, text/json { "key": key }|HTTP 500|
+|/auth|인증 번호를 발급합니다.|쿼리: email로 인증번호를 발급받을 이메일 전송|HTTP 201|HTTP 500|
 
 ### Socket.io 채팅: 일반 유저용 클라이언트
 채팅의 흐름은 다음과 같습니다.
